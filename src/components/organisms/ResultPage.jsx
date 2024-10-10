@@ -1,6 +1,13 @@
 import Button from "../atoms/Button";
 
-export default function ResultPage() {
+export default function ResultPage({
+  score,
+  correctAnswer,
+  totalQuestions,
+  handleRetry,
+}) {
+  const incorrectAnswer = totalQuestions - correctAnswer;
+
   return (
     <main>
       <section className="result relative bg-primary text-white min-h-screen overflow-hidden">
@@ -24,21 +31,27 @@ export default function ResultPage() {
                   </h1>
                   <div className="value">
                     <ul className="font-medium lg:text-xl flex flex-col gap-2">
-                      <li>Correct Answers: 6</li>
-                      <li>Incorrect Answers: 4</li>
-                      <li>Total Question: 10</li>
+                      <li>Correct Answers: {correctAnswer}</li>
+                      <li>Incorrect Answers: {incorrectAnswer}</li>
+                      <li>Total Question: {totalQuestions}</li>
                     </ul>
                   </div>
                 </div>
                 <div className="bottom text-center">
-                  <h5 className="font-semibold text-red-500 text-2xl lg:text-4xl">
-                    Your Score: 60
+                  <h5
+                    className={`font-semibold text-2xl lg:text-4xl ${
+                      score >= 70 ? "text-green-500" : "text-red-500"
+                    }`}
+                  >
+                    Your Score: {score}
                   </h5>
                   <span className="block pt-3 pb-6 lg:pb-8 lg:text-lg">
-                    💪 Don't give up! Try the quiz again!
+                    {score >= 70
+                      ? "🎉 Wow! You scored an excellent result!"
+                      : "💪 Don't give up! Try the quiz again!"}
                   </span>
                   <div className="button">
-                    <Button>Retry Quiz</Button>
+                    <Button handle={handleRetry}>Retry Quiz</Button>
                   </div>
                 </div>
               </div>

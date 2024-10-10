@@ -10,6 +10,13 @@ export default function Navbar() {
     setIsLogin(loginStatus);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("username");
+
+    window.location.href = "/";
+  };
+
   useEffect(() => {
     getIsLogin();
   }, []);
@@ -30,7 +37,10 @@ export default function Navbar() {
             </div>
             <div className="button">
               {isLogin ? (
-                <button className="py-2 px-6 text-white rounded-full border border-fourth">
+                <button
+                  onClick={handleLogout}
+                  className="py-2 px-6 text-white rounded-full border border-fourth"
+                >
                   Logout
                 </button>
               ) : (

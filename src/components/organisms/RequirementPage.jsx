@@ -8,14 +8,15 @@ export default function RequirementPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getLoginStatus = sessionStorage.getItem("isLogin");
+    const getLoginStatus = localStorage.getItem("isLogin");
+
     if (!getLoginStatus) {
-      navigate("/");
+      navigate("/login");
     }
   }, []);
 
   const handleStartedQuiz = () => {
-    console.log("uda kehandle ni");
+    navigate("/quiz");
   };
 
   useEffect(() => {

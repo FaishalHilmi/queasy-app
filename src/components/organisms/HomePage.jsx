@@ -31,7 +31,7 @@ export default function HomePage() {
                   fun along the way 🧑🏻‍💻{" "}
                 </span>
                 <div className="button mt-8">
-                  <RouterLink path="/">Start Quiz Now</RouterLink>
+                  <RouterLink path="/requirement">Start Quiz Now</RouterLink>
                 </div>
               </div>
             </div>
