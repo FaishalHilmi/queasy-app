@@ -3,7 +3,11 @@ import Label from "../atoms/Label";
 import Input from "../atoms/Input";
 import { Link } from "react-router-dom";
 
-export default function FormSignin({ handle }) {
+export default function FormSignin({
+  handle,
+  onChangeUsername,
+  onChangePassword,
+}) {
   return (
     <form onSubmit={handle}>
       <div className="flex flex-col gap-2">
@@ -14,6 +18,7 @@ export default function FormSignin({ handle }) {
               type="text"
               name="username"
               placeholder="Enter your username"
+              onChange={onChangeUsername}
             />
           </div>
         </div>
@@ -24,6 +29,7 @@ export default function FormSignin({ handle }) {
               type="password"
               name="password"
               placeholder="Enter your password"
+              onChange={onChangePassword}
             />
           </div>
         </div>

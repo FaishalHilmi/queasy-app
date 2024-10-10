@@ -1,6 +1,28 @@
+import { useEffect, useState } from "react";
 import Button from "../atoms/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function RequirementPage() {
+  const [username, setUsername] = useState("");
+  const [startedQuiz, setStartedQuiz] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getLoginStatus = sessionStorage.getItem("isLogin");
+    if (!getLoginStatus) {
+      navigate("/");
+    }
+  }, []);
+
+  const handleStartedQuiz = () => {
+    console.log("uda kehandle ni");
+  };
+
+  useEffect(() => {
+    const getUsername = localStorage.getItem("username");
+    setUsername(getUsername);
+  }, []);
+
   return (
     <main>
       <section className="requirement relative bg-primary text-white min-h-screen overflow-hidden">
@@ -19,7 +41,7 @@ export default function RequirementPage() {
             <div className="caption-wrapper flex items-center lg:pe-12">
               <div>
                 <h1 className="font-bold text-2xl lg:text-5xl mb-4">
-                  Hello, John Paul! 👋
+                  Hello, {username} 👋
                 </h1>
                 <div className="sub-heading mb-6">
                   <h5 className="font-semibold text-xl mb-2">
@@ -49,7 +71,7 @@ export default function RequirementPage() {
                   </ul>
                 </div>
                 <div className="button mt-7">
-                  <Button>Start Quiz</Button>
+                  <Button handle={handleStartedQuiz}>Start Quiz</Button>
                 </div>
               </div>
             </div>

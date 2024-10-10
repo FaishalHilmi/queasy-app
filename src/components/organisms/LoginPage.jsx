@@ -1,6 +1,34 @@
 import FormSignin from "../molecules/FormSignin";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [login, setLogin] = useState();
+  const navigate = useNavigate();
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    setLogin(true);
+  };
+
+  useEffect(() => {
+    if (login) {
+      localStorage.setItem("username", username);
+      localStorage.setItem("isLogin", login);
+      navigate("/requirement");
+    }
+  }, [login]);
+
+  const handleChangeUsername = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <main>
       <section className="login relative bg-primary text-white min-h-screen overflow-hidden">
@@ -27,7 +55,11 @@ export default function LoginPage() {
                   </span>
                 </div>
                 <div className="form-wrapper lg:col-span-6">
-                  <FormSignin />
+                  <FormSignin
+                    handle={handleLogin}
+                    onChangeUsername={handleChangeUsername}
+                    onChangePassword={handleChangePassword}
+                  />
                 </div>
               </div>
             </div>
