@@ -36,32 +36,45 @@ Pastikan Anda sudah menginstall **Node.js** di komputer Anda. Anda bisa mengundu
    ```bash
    git clone https://github.com/username/queasy-app.git
 
+   ```
+
 2. Masuk direktori proyek
 
    ```bash
    cd queasy-app
 
+   ```
+
 3. Install dependensi yang diperlukan:
 
    ```bash
    npm install
-   
+
+   ```
+
 4. Buat file .env untuk konfigurasi API, dan tambahkan variabel berikut:
 
    ```bash
-   VITE_REACT_API_URL=https://opentdb.com/api.php](https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
-   
+   VITE_REACT_API_URL=https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple
+
+   ```
+
 5. Jalakan server
 
    ```bash
    npm run dev
-   
+
+   ```
+
 6. Akses aplikasi di browser pada:
 
    ```bash
    http://localhost:5173/
-   
-6. Untuk membuat build produksi:
+
+   ```
+
+7. Untuk membuat build produksi:
 
    ```bash
    npm run build
+   ```
