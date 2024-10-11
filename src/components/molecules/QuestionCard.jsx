@@ -15,10 +15,9 @@ export default function QuestionCard({
       questions.correct_answer,
       ...questions.incorrect_answers,
     ];
-    // const randomAnswers = allAnswers.sort(() => Math.random() - 0.5);
+    const randomAnswers = allAnswers.sort(() => Math.random() - 0.5);
 
-    setAllAnswers(allAnswers);
-    // setAllAnswers(randomAnswers);
+    setAllAnswers(randomAnswers);
   }, [questions]);
 
   if (!questions) {

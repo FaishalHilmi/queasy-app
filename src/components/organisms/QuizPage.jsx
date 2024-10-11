@@ -21,7 +21,6 @@ export default function QuizPage() {
 
       if (data.response_code === 0 && data.results != null) {
         setQuestions(data.results);
-        // countdown((prev) => setTimer(prev));
       } else {
         fetchDataQuiz();
       }
@@ -87,6 +86,7 @@ export default function QuizPage() {
 
     if (selectedAnswer === currentQuestion.correct_answer) {
       setScore((score) => score + 10);
+
       setCorrectAnswers((prevCount) => prevCount + 1);
     }
 
