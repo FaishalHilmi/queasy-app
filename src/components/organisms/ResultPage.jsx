@@ -51,7 +51,9 @@ export default function ResultPage({
                       : "💪 Don't give up! Try the quiz again!"}
                   </span>
                   <div className="button">
-                    <Button handle={handleRetry}>Retry Quiz</Button>
+                    <Button handle={handleRetry} className="primary">
+                      Retry Quiz
+                    </Button>
                   </div>
                 </div>
               </div>

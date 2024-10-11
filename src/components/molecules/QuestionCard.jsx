@@ -6,10 +6,10 @@ export default function QuestionCard({
   currentIndex,
   totalQuestions,
 }) {
-  const [allAnswers, setAllAnswers] = useState([]); // Inisialisasi dengan array kosong
+  const [allAnswers, setAllAnswers] = useState([]);
 
   useEffect(() => {
-    if (!questions) return; // Jika questions undefined, keluar dari useEffect
+    if (!questions) return;
 
     const allAnswers = [
       questions.correct_answer,
@@ -22,7 +22,7 @@ export default function QuestionCard({
   }, [questions]);
 
   if (!questions) {
-    return <div>Loading...</div>; // Menampilkan loading atau pesan lainnya
+    return <div>Loading...</div>;
   }
 
   return (

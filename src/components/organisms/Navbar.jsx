@@ -1,9 +1,13 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import RouterLink from "../atoms/RouterLink";
 import { useEffect, useState } from "react";
+import Button from "../atoms/Button";
+import ModalLayout from "./ModalLayout";
 
 export default function Navbar() {
   const [isLogin, setIsLogin] = useState("");
+  const [modalLogout, setModaLogout] = useState(false);
+  const navigate = useNavigate();
 
   const getIsLogin = () => {
     const loginStatus = localStorage.getItem("isLogin");
@@ -13,8 +17,22 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("isLogin");
     localStorage.removeItem("username");
+    localStorage.removeItem("quizState");
 
     window.location.href = "/";
+  };
+
+  const handleShowModalLogout = () => {
+    setModaLogout(true);
+  };
+
+  const handleHideModalLogout = () => {
+    setModaLogout(false);
+  };
+
+  const clearStorage = () => {
+    localStorage.removeItem("quizState");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -27,22 +45,19 @@ export default function Navbar() {
         <div className="container-content font-primary px-5 lg:px-36">
           <div className="content-wrapper pt-4 lg:pt-5 flex justify-between items-center">
             <div className="logo">
-              <Link to="/">
+              <Button to="/" handle={clearStorage}>
                 <img
                   src="/assets/images/logo-queasy.png"
                   alt="Logo Queasy"
                   className="w-28 lg:w-36"
                 />
-              </Link>
+              </Button>
             </div>
             <div className="button">
               {isLogin ? (
-                <button
-                  onClick={handleLogout}
-                  className="py-2 px-6 text-white rounded-full border border-fourth"
-                >
+                <Button handle={handleShowModalLogout} className="fourth">
                   Logout
-                </button>
+                </Button>
               ) : (
                 <RouterLink path="/login">Login</RouterLink>
               )}
@@ -50,6 +65,13 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {modalLogout == true ? (
+        <ModalLayout
+          handleAction={handleLogout}
+          handleCancel={handleHideModalLogout}
+        />
+      ) : null}
     </nav>
   );
 }

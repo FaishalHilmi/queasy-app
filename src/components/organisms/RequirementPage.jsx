@@ -72,7 +72,9 @@ export default function RequirementPage() {
                   </ul>
                 </div>
                 <div className="button mt-7">
-                  <Button handle={handleStartedQuiz}>Start Quiz</Button>
+                  <Button handle={handleStartedQuiz} className="primary">
+                    Start Quiz
+                  </Button>
                 </div>
               </div>
             </div>
