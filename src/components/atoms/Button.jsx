@@ -9,11 +9,7 @@ export default function Button({ handle, children, className }) {
   };
 
   return (
-    <button
-      // className="w-full bg-fourth font-medium text-white py-3 rounded-md"
-      className={buttonClassName[className]}
-      onClick={handle}
-    >
+    <button className={buttonClassName[className]} onClick={handle}>
       {children}
     </button>
   );
